@@ -152,3 +152,8 @@ export type WorkflowTrigger = Prisma.WorkflowTriggerModel
  * 
  */
 export type WorkflowLog = Prisma.WorkflowLogModel
+/**
+ * Model GrantReport
+ * 
+ */
+export type GrantReport = Prisma.GrantReportModel

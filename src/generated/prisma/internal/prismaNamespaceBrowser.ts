@@ -77,7 +77,8 @@ export const ModelName = {
   OrganizationMembership: 'OrganizationMembership',
   Integration: 'Integration',
   WorkflowTrigger: 'WorkflowTrigger',
-  WorkflowLog: 'WorkflowLog'
+  WorkflowLog: 'WorkflowLog',
+  GrantReport: 'GrantReport'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -603,6 +604,22 @@ export const WorkflowLogScalarFieldEnum = {
 } as const
 
 export type WorkflowLogScalarFieldEnum = (typeof WorkflowLogScalarFieldEnum)[keyof typeof WorkflowLogScalarFieldEnum]
+
+
+export const GrantReportScalarFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  grantId: 'grantId',
+  reportType: 'reportType',
+  reportData: 'reportData',
+  periodStart: 'periodStart',
+  periodEnd: 'periodEnd',
+  generatedAt: 'generatedAt',
+  generatedBy: 'generatedBy',
+  status: 'status'
+} as const
+
+export type GrantReportScalarFieldEnum = (typeof GrantReportScalarFieldEnum)[keyof typeof GrantReportScalarFieldEnum]
 
 
 export const SortOrder = {

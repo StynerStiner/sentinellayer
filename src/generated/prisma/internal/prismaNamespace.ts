@@ -410,7 +410,8 @@ export const ModelName = {
   OrganizationMembership: 'OrganizationMembership',
   Integration: 'Integration',
   WorkflowTrigger: 'WorkflowTrigger',
-  WorkflowLog: 'WorkflowLog'
+  WorkflowLog: 'WorkflowLog',
+  GrantReport: 'GrantReport'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -426,7 +427,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "organization" | "user" | "inviteToken" | "grant" | "budgetCategory" | "expenseRequest" | "vendor" | "subscription" | "virtualCard" | "cardholderEligibility" | "transaction" | "ledgerEntry" | "approval" | "auditLog" | "conversation" | "conversationParticipant" | "message" | "notification" | "document" | "disbursementPolicy" | "promoCode" | "promoRedemption" | "calendarEvent" | "organizationMembership" | "integration" | "workflowTrigger" | "workflowLog"
+    modelProps: "organization" | "user" | "inviteToken" | "grant" | "budgetCategory" | "expenseRequest" | "vendor" | "subscription" | "virtualCard" | "cardholderEligibility" | "transaction" | "ledgerEntry" | "approval" | "auditLog" | "conversation" | "conversationParticipant" | "message" | "notification" | "document" | "disbursementPolicy" | "promoCode" | "promoRedemption" | "calendarEvent" | "organizationMembership" | "integration" | "workflowTrigger" | "workflowLog" | "grantReport"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2428,6 +2429,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    GrantReport: {
+      payload: Prisma.$GrantReportPayload<ExtArgs>
+      fields: Prisma.GrantReportFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.GrantReportFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrantReportPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.GrantReportFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrantReportPayload>
+        }
+        findFirst: {
+          args: Prisma.GrantReportFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrantReportPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.GrantReportFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrantReportPayload>
+        }
+        findMany: {
+          args: Prisma.GrantReportFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrantReportPayload>[]
+        }
+        create: {
+          args: Prisma.GrantReportCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrantReportPayload>
+        }
+        createMany: {
+          args: Prisma.GrantReportCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.GrantReportCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrantReportPayload>[]
+        }
+        delete: {
+          args: Prisma.GrantReportDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrantReportPayload>
+        }
+        update: {
+          args: Prisma.GrantReportUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrantReportPayload>
+        }
+        deleteMany: {
+          args: Prisma.GrantReportDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.GrantReportUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.GrantReportUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrantReportPayload>[]
+        }
+        upsert: {
+          args: Prisma.GrantReportUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrantReportPayload>
+        }
+        aggregate: {
+          args: Prisma.GrantReportAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateGrantReport>
+        }
+        groupBy: {
+          args: Prisma.GrantReportGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GrantReportGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.GrantReportCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GrantReportCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -2976,6 +3051,22 @@ export const WorkflowLogScalarFieldEnum = {
 export type WorkflowLogScalarFieldEnum = (typeof WorkflowLogScalarFieldEnum)[keyof typeof WorkflowLogScalarFieldEnum]
 
 
+export const GrantReportScalarFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  grantId: 'grantId',
+  reportType: 'reportType',
+  reportData: 'reportData',
+  periodStart: 'periodStart',
+  periodEnd: 'periodEnd',
+  generatedAt: 'generatedAt',
+  generatedBy: 'generatedBy',
+  status: 'status'
+} as const
+
+export type GrantReportScalarFieldEnum = (typeof GrantReportScalarFieldEnum)[keyof typeof GrantReportScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -3452,6 +3543,7 @@ export type GlobalOmitConfig = {
   integration?: Prisma.IntegrationOmit
   workflowTrigger?: Prisma.WorkflowTriggerOmit
   workflowLog?: Prisma.WorkflowLogOmit
+  grantReport?: Prisma.GrantReportOmit
 }
 
 /* Types for Logging */
