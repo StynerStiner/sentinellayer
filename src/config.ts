@@ -8,6 +8,7 @@ export const config: AgentConfig = {
   complianceIntervalHours: parseInt(process.env.COMPLIANCE_INTERVAL_HOURS || "6", 10),
   reporterIntervalDays: parseInt(process.env.REPORTER_INTERVAL_DAYS || "7", 10),
   onboardingIntervalHours: parseInt(process.env.ONBOARDING_INTERVAL_HOURS || "12", 10),
+  trialMonitorIntervalHours: parseInt(process.env.TRIAL_MONITOR_INTERVAL_HOURS || "12", 10),
   alertThresholdWarning: parseFloat(process.env.ALERT_THRESHOLD_WARNING || "0.80"),
   alertThresholdCritical: parseFloat(process.env.ALERT_THRESHOLD_CRITICAL || "0.90"),
   logLevel: process.env.LOG_LEVEL || "info",

@@ -7,6 +7,7 @@ import { WatchdogAgent } from "./agents/watchdog";
 import { ComplianceAgent } from "./agents/compliance";
 import { ReporterAgent } from "./agents/reporter";
 import { OnboardingAgent } from "./agents/onboarding";
+import { TrialMonitorAgent } from "./agents/trial-monitor";
 
 async function main(): Promise<void> {
   const logger = new Logger(config.logLevel);
@@ -24,18 +25,21 @@ async function main(): Promise<void> {
   const compliance = new ComplianceAgent(db, config, alertWriter, logger);
   const reporter = new ReporterAgent(db, config, alertWriter, logger);
   const onboarding = new OnboardingAgent(db, config, alertWriter, logger);
+  const trialMonitor = new TrialMonitorAgent(db, config, alertWriter, logger);
 
   // Build cron expressions from config
   const watchdogCron = `0 */${config.watchdogIntervalHours} * * *`;
   const complianceCron = `0 */${config.complianceIntervalHours} * * *`;
   const reporterCron = `0 0 */${config.reporterIntervalDays} * *`;
   const onboardingCron = `0 */${config.onboardingIntervalHours} * * *`;
+  const trialMonitorCron = `0 */${config.trialMonitorIntervalHours} * * *`;
 
   const scheduler = new Scheduler(logger);
   scheduler.register(watchdog, watchdogCron);
   scheduler.register(compliance, complianceCron);
   scheduler.register(reporter, reporterCron);
   scheduler.register(onboarding, onboardingCron);
+  scheduler.register(trialMonitor, trialMonitorCron);
 
   // Single agent mode: run once and exit
   if (singleAgent && runOnce) {
@@ -44,6 +48,8 @@ async function main(): Promise<void> {
       compliance: "ComplianceMonitor",
       reporter: "GrantReporter",
       onboarding: "OnboardingCoordinator",
+      "trial-monitor": "TrialMonitor",
+      trialmonitor: "TrialMonitor",
     };
 
     const resolvedName = nameMap[singleAgent.toLowerCase()] || singleAgent;
@@ -59,6 +65,7 @@ async function main(): Promise<void> {
     { name: compliance.name, interval: `${config.complianceIntervalHours}h` },
     { name: reporter.name, interval: `${config.reporterIntervalDays}d` },
     { name: onboarding.name, interval: `${config.onboardingIntervalHours}h` },
+    { name: trialMonitor.name, interval: `${config.trialMonitorIntervalHours}h` },
   ]);
 
   // Run watchdog immediately on startup, then schedule

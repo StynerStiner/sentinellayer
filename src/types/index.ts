@@ -5,6 +5,7 @@ export interface AgentConfig {
   complianceIntervalHours: number;
   reporterIntervalDays: number;
   onboardingIntervalHours: number;
+  trialMonitorIntervalHours: number;
   alertThresholdWarning: number;
   alertThresholdCritical: number;
   logLevel: string;

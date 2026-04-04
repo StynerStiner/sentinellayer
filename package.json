@@ -11,6 +11,7 @@
     "agent:compliance": "npx tsx src/index.ts --agent compliance --once",
     "agent:reporter": "npx tsx src/index.ts --agent reporter --once",
     "agent:onboarding": "npx tsx src/index.ts --agent onboarding --once",
+    "agent:trial-monitor": "npx tsx src/index.ts --agent trial-monitor --once",
     "generate": "npx prisma generate"
   },
   "dependencies": {
