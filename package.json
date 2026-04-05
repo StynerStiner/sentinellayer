@@ -1,7 +1,7 @@
 {
-  "name": "paperclip",
+  "name": "sentinellayer",
   "version": "1.0.0",
-  "description": "Paperclip — Autonomous AI Operations Layer for BenefitsSafe",
+  "description": "SentinelLayer — Autonomous AI Operations Layer for BenefitsSafe",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",

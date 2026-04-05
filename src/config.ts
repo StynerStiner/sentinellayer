@@ -17,5 +17,5 @@ export const config: AgentConfig = {
 export const DATABASE_URL = process.env.DATABASE_URL;
 
 if (!DATABASE_URL) {
-  throw new Error("DATABASE_URL is required. Paperclip connects to the same Aurora instance as BenefitsSafe.");
+  throw new Error("DATABASE_URL is required. SentinelLayer connects to the same Aurora instance as BenefitsSafe.");
 }

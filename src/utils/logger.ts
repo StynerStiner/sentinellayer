@@ -51,7 +51,7 @@ export class Logger {
 
   banner(agents: { name: string; interval: string }[]): void {
     console.log("\n============================================");
-    console.log("  PAPERCLIP -- Autonomous Operations Layer");
+    console.log("  SENTINELLAYER -- Autonomous Operations Layer");
     console.log("  BenefitsSafe AI Agent System");
     console.log("============================================");
     console.log(`  Started: ${new Date().toISOString()}`);

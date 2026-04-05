@@ -53,7 +53,7 @@ async function main(): Promise<void> {
     };
 
     const resolvedName = nameMap[singleAgent.toLowerCase()] || singleAgent;
-    logger.info("Paperclip", `Running single agent: ${resolvedName}`);
+    logger.info("SentinelLayer", `Running single agent: ${resolvedName}`);
     await scheduler.runOnce(resolvedName);
     await disconnectDb();
     process.exit(0);
@@ -69,17 +69,17 @@ async function main(): Promise<void> {
   ]);
 
   // Run watchdog immediately on startup, then schedule
-  logger.info("Paperclip", "Running initial Watchdog scan...");
+  logger.info("SentinelLayer", "Running initial Watchdog scan...");
   await scheduler.runOnce("Watchdog");
 
   scheduler.start();
 
   // Graceful shutdown
   const shutdown = async (signal: string): Promise<void> => {
-    logger.info("Paperclip", `Received ${signal}. Shutting down gracefully...`);
+    logger.info("SentinelLayer", `Received ${signal}. Shutting down gracefully...`);
     scheduler.stop();
     await disconnectDb();
-    logger.info("Paperclip", "Shutdown complete.");
+    logger.info("SentinelLayer", "Shutdown complete.");
     process.exit(0);
   };
 
@@ -88,6 +88,6 @@ async function main(): Promise<void> {
 }
 
 main().catch((err) => {
-  console.error("[FATAL] Paperclip failed to start:", err);
+  console.error("[FATAL] SentinelLayer failed to start:", err);
   process.exit(1);
 });

@@ -1,4 +1,4 @@
-// Paperclip Agent Types
+// SentinelLayer Agent Types
 
 export interface AgentConfig {
   watchdogIntervalHours: number;

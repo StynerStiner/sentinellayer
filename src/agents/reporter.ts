@@ -236,7 +236,7 @@ export class ReporterAgent implements BaseAgent {
         reportData: JSON.parse(JSON.stringify(reportData)),
         periodStart,
         periodEnd: now,
-        generatedBy: "paperclip_reporter",
+        generatedBy: "sentinellayer_reporter",
         status: "draft",
       },
     });

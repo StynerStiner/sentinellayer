@@ -66,9 +66,9 @@ export class AlertWriter {
         organizationId: params.organizationId,
         action: "create",
         entityType: "notification",
-        entityId: params.entityId || "paperclip",
+        entityId: params.entityId || "sentinellayer",
         newValue: {
-          source: "paperclip",
+          source: "sentinellayer",
           alertType: params.type,
           title: params.title,
         },

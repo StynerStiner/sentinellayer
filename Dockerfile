@@ -1,4 +1,4 @@
-# Paperclip -- Autonomous AI Operations Layer for BenefitsSafe
+# SentinelLayer -- Autonomous AI Operations Layer for BenefitsSafe
 # Deploy to AWS ECS/Fargate as a long-running service
 
 FROM node:20-slim AS base
@@ -31,10 +31,10 @@ COPY --from=builder /app/package.json ./
 COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/src/generated ./src/generated
 
-# Health check -- agent writes heartbeat to /tmp/paperclip-health
+# Health check -- agent writes heartbeat to /tmp/sentinellayer-health
 HEALTHCHECK --interval=60s --timeout=5s --retries=3 \
-  CMD test -f /tmp/paperclip-health && \
-      test $(($(date +%s) - $(stat -c %Y /tmp/paperclip-health 2>/dev/null || echo 0))) -lt 300
+  CMD test -f /tmp/sentinellayer-health && \
+      test $(($(date +%s) - $(stat -c %Y /tmp/sentinellayer-health 2>/dev/null || echo 0))) -lt 300
 
 USER node
 CMD ["node", "dist/index.js"]
